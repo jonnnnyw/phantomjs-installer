@@ -161,6 +161,10 @@ class Installer
             // slash fix (not needed, but looks better on the dropped php file)
             $targetName = str_replace('/', '\\', $targetName);
         }
+        
+        if ($os === 'linux') {
+            $sourceName = str_replace('/bin', '', $sourceName);
+        }
 
         if ($os !== 'unknown') {
             copy($targetDir . $sourceName, $targetName);
