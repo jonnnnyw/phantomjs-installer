@@ -238,14 +238,20 @@ class Installer
         }
 
         if ($os === 'linux') {
-            $bitsize = self::getBitSize();
-
-            if ($bitsize === 32) {
-                $url = 'https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-' . $version . '-linux-i686.tar.bz2';
-            }
-
-            if ($bitsize === 64) {
-                $url = 'https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-' . $version . '-linux-x86_64.tar.bz2';
+            
+            if($version == '2.0.0') {
+                $url = 'https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2';
+            } else {
+            
+                $bitsize = self::getBitSize();
+                
+                if ($bitsize === 32) {
+                    $url = 'https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-' . $version . '-linux-i686.tar.bz2';
+                }
+    
+                if ($bitsize === 64) {
+                    $url = 'https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-' . $version . '-linux-x86_64.tar.bz2';
+                }
             }
         }
 
